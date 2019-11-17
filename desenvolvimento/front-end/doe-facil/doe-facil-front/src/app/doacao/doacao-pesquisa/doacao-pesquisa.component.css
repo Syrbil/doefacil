@@ -1,0 +1,39 @@
+
+.tool{
+  background-image: linear-gradient(to right, rgb(80, 74, 186), rgb(137,138,255) 13%, black);
+  margin-left: 15px; 
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.text-input--underbar{
+  border: 2px ridge white;
+  background-image: none !important;
+  background-color: white !important;
+}
+
+.linklabel{
+  margin: 3px 15px; 
+  font-family: monospace; 
+  text-decoration: underline; 
+  font-weight: bold; 
+  font-size: 15px; 
+  color: rgb(240,240,240);
+}
+
+.ui-button.toolbarbutton{
+  size:20px;
+  background-image: none;
+  background-color: transparent !important; 
+  background-repeat: no-repeat; 
+  border: none !important; 
+  overflow: hidden !important; 
+  outline: 0 !important; 
+  font-size: 15px; 
+  font-weight: bold;
+}
+
+body{
+  height: 100%;
+}
+

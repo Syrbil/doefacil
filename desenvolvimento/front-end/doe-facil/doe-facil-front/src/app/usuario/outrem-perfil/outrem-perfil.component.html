@@ -1,0 +1,166 @@
+<body style="text-align: center;">
+    <!-- Toolbar -->
+  <div class="p-grid" style="height: 53px !important; background-image: linear-gradient(to right, rgb(80, 74, 186), rgb(137,138,255) 13%, black);
+              padding: 5px 0px 0px 15px; height: 55px;">
+    <div class="p-col-fixed" style="width: 250px; padding: 10px 0px 10px 40px;">
+      <a class="toolbarbutton" style="font-size: 20px; color: black; font-weight: bold; font-family: permanentMarker;"
+                routerLink="/doacoes">DoeFácil</a>
+    </div>
+      <div class="p-col"></div>
+    <div class="p-col-fixed" style="width: 300px;">
+      <label class="labeltoolbar">Perfil de {{outrem.nomeCompleto}}</label>
+    </div>
+  </div>
+
+    <!-- Informações -->
+  <div class=" ui-g-5" style="margin: 20px 20px 20px 20px; max-width: 40%;">
+    <div class="ui-md-12 ui-md-9 ui-md-6" style="float: left; text-align: left;">
+        <div class="ui-g-2" style="float: right;">
+      
+            <div class="column avallist" style="margin-right: 30px;">
+              <p>
+                <button pButton  label="{{outrem.votosPositivosUsuario}}"   
+                  class="ui-button-rounded ui-button-success" icon="pi pi-thumbs-up" style="text-align: center;" ></button>
+              </p>
+              <p>
+                <button pButton  label="{{outrem.votosNegativosUsuario}}"   
+                  class="ui-button-rounded ui-button-danger" icon="pi pi-thumbs-down"  style="text-align: center;" ></button>
+              </p>   
+          </div> 
+      </div>
+      <div class="ui-md-6 ui-fluid">
+        <label>Nome Completo: {{outrem.nomeCompleto}}</label>
+      </div>    
+      <div class="ui-md-6 ui-fluid">
+        <label>Nome de Usuário: {{outrem.nomeUsuario}}</label>
+      </div>
+      <div class="ui-md-6 ui-fluid" style="margin-bottom: 10px;">
+        <label>Contato: {{outrem.email}}</label>
+      </div>
+
+      <div class="ui-g-6 ui-fluid">
+          <label>Estado: {{outrem.estado}}</label>
+        </div>
+        <div class="ui-g-6 ui-fluid">
+          <label>Cidade: {{outrem.cidade}}</label>
+        </div>
+    </div>
+
+      <!-- Botões -->
+    <div class="ui-g-12">
+      <div class="ui-g-6">
+        <button pButton (click)="mostrarDoacoes()" label="Enviar Doação" icon="pi pi-heart" class=" boxButton"></button>
+      </div>
+
+      <div class="ui-g-6">
+        <button pButton  (click)="digitar=true" label="Enviar Mensagem" icon="pi pi-bell" class=" boxButton"></button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Enviar Doação-->
+  <p-dialog header="Selecione a Doação " [(visible)]="mostrar" [modal]="true" [responsive]="true" [style]="{width: '800px','text-align':'center'}"
+  [maximizable]="true" [baseZIndex]="10000" >
+    <p-confirmDialog header="Confirmação" icon="pi pi-question-circle" acceptLabel="Sim" rejectLabel="Não"></p-confirmDialog>
+    <p-table [value]="doacoes" [paginator]="true" [rows]="5" [responsive]="true">
+      <ng-template pTemplate="header" >
+        <tr>
+          <th>Nome</th>
+          <th style="width:150px">Status</th>
+          <th style="width:100px" >Enviar</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-feita>
+        <tr>
+          <td><a [routerLink]="['/doacoes/',feita.id]">{{feita.nome}}</a></td>
+          <td>{{feita.status}}</td>
+          <td>
+            <button pButton icon="pi pi-check"  pTooltip="Enviar Doação" tooltipPosition="top" showDelay="1000" class="ui-button-success" (click)="confirmarEnvio(feita)"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-dialog>
+
+
+  <div class="ui-mg-12 ui-mg-9 ui-mg-6">
+    <!-- Imagem do usuário -->
+    <div class="ui-g-6" style="text-align: center; margin-bottom: 50px;">
+      <img src="../../../assets/image/tenor.png" alt="img" style="min-width: 75px; min-height: 75px; max-width: 400px; max-height: 200px;">
+    </div>  
+    <div class="ui-g-6" style="text-align: center;">
+      <!-- Doações cadastradas -->
+      <div class=" ui-g-6" style="text-align:center;">
+          <h2> 
+              <span>
+              <button pButton  label="{{doaFeitas}}"   
+                 class="ui-button-rounded" icon="pi pi-info" style="width: 45px; font-weight: bold; border: none; color: black; background-color: rgb(180, 180, 180);" ></button>
+                 <label class="labeltoolbar"> Doações cadastradas </label>
+              </span>
+               
+              </h2>
+        <p-table [value]="outrem.feitas" [paginator]="true" [rows]="4" [responsive]="true" [autoLayout]="true">
+          <ng-template pTemplate="header" >
+            <tr>
+              <th>Nome</th>
+              <th>Status</th>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-feita>
+            <tr>
+              <td><a [routerLink]="['/doacoes',feita.id]">{{feita.nome}}</a></td>
+              <td>{{feita.status}}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+
+        <!-- Doações recebidas-->
+      <div class="ui-g-6" style="text-align:center;">
+          <h2> 
+              <span>
+              <button pButton  label="{{doaRecebidas}}"   
+                 class="ui-button-rounded" icon="pi pi-info" style="width: 45px; font-weight: bold; border: none; color: black; background-color: rgb(180, 180, 180);" ></button>
+                 <label class="labeltoolbar"> Doações recebidas </label>
+              </span>
+               
+              </h2>
+        <p-table [value]="outrem.recebidas" [paginator]="true" [rows]="4" [responsive]="true" [autoLayout]="true">
+          <ng-template pTemplate="header" >
+            <tr>
+              <th>Nome</th>
+              <th>Doador</th>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-recebida>
+            <tr>
+              <td><a [routerLink]="['/doacoes',recebida.id]">{{recebida.nome}}</a></td>
+              <td><a *ngIf="recebida.doador.idUsuario==service.logado.idUsuario" 
+                    then [routerLink]="['/usuario/meuperfil']" 
+                    else [routerLink]="['/usuario/',recebida.doador.idUsuario]">{{recebida.doador.nomeCompleto}} </a></td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>  
+    </div>
+  </div>
+
+  <p-dialog header="Digite a Mensagem" [(visible)]="digitar" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70"
+            [baseZIndex]="10000" resizable="false">
+
+    <div class="ui-g-12 ui-fluid">
+      <textarea  maxlength="255" pInputTextarea autoResize="autoResize" name="mensagem" [(ngModel)]="mensagem" class="ui-fluid"></textarea>
+    </div>
+
+    <p-footer>
+      <button type="button" pButton icon="pi pi-check" (click)="enviarMensagem()" label="Enviar"></button>
+      <button type="button" pButton icon="pi pi-minus" (click)="digitar=false" label="Cancelar" class="ui-button-secondary"></button>
+    </p-footer>
+  </p-dialog>
+  
+
+  
+</body>

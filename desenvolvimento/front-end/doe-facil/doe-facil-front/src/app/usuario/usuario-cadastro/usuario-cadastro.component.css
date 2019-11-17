@@ -1,0 +1,68 @@
+.ui-button.toolbarbutton{
+    size:20px;
+    background-color: transparent !important; 
+    background-repeat: no-repeat; 
+    border: none !important; 
+    overflow: hidden; 
+    outline: 0; 
+    font-size: 15px; 
+    font-weight: bold;
+  }
+
+.labeltoolbar{
+  display: inline-block;
+  padding-top: 5px;
+  font-family: Impact;
+  font-weight: bold;
+  font-size: 20px;
+  width: 250px;
+  color: rgb(240, 240, 240);
+  text-decoration: underline;
+}
+
+.p-grid.gridcadastro{
+  margin: 10px 0px 0px 20px;
+}
+
+.text-input--underbar{
+  border: 2px ridge white;
+  background-image: none !important;
+  background-color: white !important;
+}
+body{
+  background-color: rgb(30, 30, 30);
+}
+
+.texto{
+  color: rgb(240, 240, 240);
+  font-size: 13px;
+}
+
+.warning{
+  font-size: 10px; 
+  color: red;
+}
+
+.marginColuna{
+  padding-right: 100px;
+  margin-top: 2px;
+}
+
+.ui-button.endbutton{
+  width: 200px;
+  height: 40px;
+  background-color: transparent !important;
+  border: none transparent 0px !important; 
+  outline: none !important;
+  color: whitesmoke;
+  font-size: 20px; 
+  font-weight: bold;
+  text-decoration: underline !important;
+}
+
+.container{
+padding-top: 20px;
+background-color: rgb(60, 60, 60);
+border: 5px solid rgb(30, 30, 30);
+border-top: 1px;
+}

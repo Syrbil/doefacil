@@ -1,0 +1,50 @@
+
+.ui-button.toolbarbutton{
+    size:20px;
+    background-image: none;
+    background-color: transparent !important; 
+    background-repeat: no-repeat; 
+    border: none !important; 
+    overflow: hidden !important; 
+    outline: 0 !important; 
+    font-size: 15px; 
+    font-weight: bold;
+  }
+
+  body{
+    height: 100%;
+  }
+  
+  .texto{
+    color: rgb(240, 240, 240);
+    font-size: 13px;
+  }
+
+  .labeltoolbar{
+    display: inline-block;
+    padding-top: 5px;
+    font-family: Impact;
+    font-weight: bold;
+    font-size: 20px;
+    width: 250px;
+    color: rgb(240, 240, 240);
+    text-decoration: underline;
+  }
+
+label{
+    color: rgb(240, 240, 240);
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+div.ui-md-6 .ui-fluid{
+    text-align: left;
+  }
+  
+  div.ui-g-6{
+    margin: 40px;
+    text-align: left;
+    border: 2px solid black; 
+    background-color: rgb(60, 60, 60);
+  }

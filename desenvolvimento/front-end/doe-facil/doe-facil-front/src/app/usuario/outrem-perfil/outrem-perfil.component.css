@@ -1,0 +1,56 @@
+.ui-button.toolbarbutton{
+    size:20px;
+    background-image: none;
+    background-color: transparent !important; 
+    background-repeat: no-repeat; 
+    border: none !important; 
+    overflow: hidden !important; 
+    outline: 0 !important; 
+    font-size: 15px; 
+    font-weight: bold;
+  }
+
+.labeltoolbar{
+  display: inline-block;
+  padding-top: 5px;
+  font-family: Impact;
+  font-weight: bold;
+  font-size: 20px;
+  width: 250px;
+  color: rgb(240, 240, 240);
+  text-decoration: underline;
+}
+
+
+body{
+  background-color: rgb(40, 40, 40);
+  height: 100%;
+}
+
+div.column.avallist{
+    float: right; 
+    margin-right: 15px; 
+    width: 40%; 
+    text-align: center;
+}
+
+div.ui-g-5{
+    background-color: rgb(60, 60, 60);
+    border: 2px solid black;
+}
+
+div.ui-g-6.ui-fluid{
+    width: 100%;
+}
+
+div.ui-col-1.ui-fluid.layout{
+    width: 50%;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+label{
+    color: rgb(240, 240, 240);
+    font-size: 15px;
+    font-weight: bold;
+}

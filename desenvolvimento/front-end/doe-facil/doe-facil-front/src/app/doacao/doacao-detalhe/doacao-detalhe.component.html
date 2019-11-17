@@ -1,0 +1,93 @@
+<body>
+
+    <!-- Toolbar -->
+  <div class="p-grid" style="height: 53px !important; background-image: linear-gradient(to right, rgb(80, 74, 186), rgb(137,138,255) 13%, black);
+              padding: 5px 0px 0px 15px; height: 55px;">
+    <div class="p-col-fixed" style="width: 250px; padding: 10px 0px 10px 40px;">
+      <a class="toolbarbutton" style="font-size: 20px; color: black; font-weight: bold; font-family: permanentMarker;"
+                routerLink="/doacoes">DoeFácil</a>
+    </div>
+    <div class="p-col"></div>
+    <div class="p-col-fixed" style="width: 300px;">
+      <label class="labeltoolbar">{{doacao.nome}}</label>
+    </div>
+  </div>
+
+
+  <p-confirmDialog header="Confirmação" icon="pi pi-question-circle" acceptLabel="Sim" rejectLabel="Não"></p-confirmDialog>
+
+
+  <span>
+    <div class="ui-g-6">
+      <span>
+        <div class="ui-md-6 ui-fluid">
+          <label style="font-size: 30px;">{{doacao.nome}}</label>
+        </div>
+
+        <span class="ui-g-6" style="float: right; margin: 0px;">
+          <div class="ui-g-3" style="margin: 0px; float: right;">
+            <button pButton [disabled]='gosteiClicado' icon="pi pi-thumbs-up" label="{{doacao.votosPositivos}}"
+              pTooltip="Gostei" tooltipPosition="top" showDelay="1000" class="ui-button-rounded ui-button-success" (click)="gostei()"></button>  
+          </div>
+
+          <div class="ui-g-3" style="margin: 0px; float: right;">
+            <button pButton [disabled]="naogosteiClicado" icon="pi pi-thumbs-down" label="{{doacao.votosNegativos}}"
+              pTooltip="Não Gostei" tooltipPosition="top" showDelay="1000" class="ui-button-rounded ui-button-danger" (click)="naogostei()"></button>
+          </div>
+        </span>
+      </span>
+
+        <span class="ui-md-6 ui-fluid ">
+          <label> doador: </label>
+          <a [routerLink]="['/usuario/',doacao.doador.idUsuario]">{{doacao.doador.nomeCompleto}}</a> 
+        </span>
+        <div></div>
+        <span class="ui-md-6 ui-fluid " *ngIf="doacao.recebedor!=null">
+            <label> recebedor: </label>
+          <a [routerLink]="['/usuario/',doacao.recebedor.idUsuario]" >{{doacao.recebedor.nomeCompleto}}</a>
+        </span>
+
+        <div class="ui-md-6 ui-fluid">
+          <label>{{doacao.doador.estado}}</label>
+        </div>
+
+        <div class="ui-md-6   ui-fluid">
+          <label>{{doacao.doador.cidade}}</label>
+        </div>
+
+        <div class="ui-md-6 ui-fluid">
+          <label>{{doacao.dataInicio}}</label>
+        </div>
+
+        <div class="ui-md-6 ui-fluid " *ngIf="doacao.recebedor!=null">
+          <label>{{doacao.dataFim}}</label>
+        </div>
+
+        <div class="ui-md-6 ui-fluid">
+          <label>{{doacao.metodoFrete}}</label>
+        </div>
+
+        <div class="ui-md-6 ui-fluid">
+          <label>{{doacao.descricao}}</label>
+        </div>
+
+        <div class="ui-md-6 ui-fluid" *ngIf="doacao.recebedor==null && !minha">
+          <button pButton  label="Solicitar Doação"  [disabled]="solicitada" (click)="confirmarSolicitacao()" class=" boxButton" ></button>
+        </div>
+
+        <span class="ui-g-12" style="margin: 0px;" *ngIf="minha && doacao.recebedor==null">
+          <div class="ui-md-6" style="float: left;">
+            <button label="Editar Doação" pButton icon="pi pi-pencil" [routerLink]="['/doacao/nova',doacao.id]" > </button>
+          </div>
+          <div class="ui-md-6" style="float: right;" >
+            <button  label="Excluir Doação" pButton icon="pi pi-trash"  pTooltip="Excluir" tooltipPosition="top" showDelay="1000" class="ui-button-danger" (click)="confirmarExclusao(doacao)"></button>
+          </div>
+        </span>
+    </div>
+    <div>
+      <div>
+        <img src="../../../assets/image/doacoes/{{doacao.id}}.jpg" alt="img" width="400px" height="400px" style="margin: 30px 60px 0px 60px;">
+      </div>
+    </div>
+  </span>
+</body>

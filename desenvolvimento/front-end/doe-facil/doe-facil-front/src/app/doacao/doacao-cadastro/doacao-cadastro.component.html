@@ -1,0 +1,66 @@
+<body>
+<!-- Toolbar -->
+  <div class="p-grid" style="height: 53px !important; background-image: linear-gradient(to right, rgb(80, 74, 186), rgb(137,138,255) 13%, black);
+              padding: 5px 0px 0px 15px; height: 55px;">
+    <div class="p-col-fixed" style="width: 250px; padding: 10px 0px 10px 40px;">
+      <a class="toolbarbutton" style="font-size: 20px; color: black; font-weight: bold; font-family: permanentMarker;"
+                routerLink="/doacoes">DoeFácil</a>
+    </div>
+    <div class="p-col"></div>
+    <div class="p-col-fixed" style="width: 300px;">
+      <label class="labeltoolbar">{{editando?'Edição de ': 'Cadastro de'}} Doação</label>
+    </div>
+  </div>
+
+  <span>
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+      <div class="ui-g-12 ui-md-6">
+        
+        <div class="ui-md-6 ui-fluid">
+          <input pInputText type="text" name="nome" class="text-input text-input--underbar" placeholder="Nome da doação"
+            [(ngModel)]="nova.nome" #nome="ngModel" required minlength="3">
+          <div *ngIf="nome.hasError('required') && nome.touched" class="warning">Informe o nome</div>
+          <div *ngIf="nome.hasError('minlength')" class="warning">O nome deve ter no mínimo 3 caractares</div>
+        </div>
+
+        <div>
+        <div class="ui-md-6 ui-fluid">
+            <p-dropdown [options]="categorias"  [(ngModel)]="nova.categoria" placeholder="Categoria"
+              name="categoria"  required   #categoria="ngModel">  </p-dropdown>
+        </div>
+      </div>
+      <div class="ui-md-6 ui-fluid">
+        <p-dropdown [options]="metodos"  [(ngModel)]="nova.metodoFrete"  placeholder="Método de Frete"
+          name="metodoFrete"  required   #metodoFrete="ngModel">  </p-dropdown>
+      </div>
+
+      <div class="ui-md-6 ui-fluid">
+        <textarea maxlength="255" pInputTextarea class="textarea" style="width: 500px;" rows="6" placeholder="Descrição"  
+          name="descricao" [(ngModel)]="nova.descricao" #descricao="ngModel"></textarea>
+      </div>
+
+
+      <div class="ui-g-6">
+        <button pButton type="submit" label="{{editando?'Salvar edição': 'Salvar doação'}}"  icon="pi pi-check" [disabled]="f.invalid" ></button>
+      </div>
+
+      <div class="ui-g-6" *ngIf="!editando">
+          <button pButton type="button"  label="Cancelar" icon="pi pi-times" class="ui-button-danger"  [routerLink]="['/doacoes']" ></button>
+        </div>
+      
+      <div class="ui-g-6" *ngIf="editando">
+        <button pButton type="button"  label="Cancelar Edição" icon="pi pi-times" class="ui-button-danger"  [routerLink]="['/doacoes/',nova.id]" ></button>
+      </div>
+      </div>
+    </form>
+    <div *ngIf="editando">
+      <img src="../../../assets/image/doacoes/{{nova.id}}.jpg" alt="img" width="400px" height="400px" style="margin: 30px 60px 0px 60px;">
+    </div>
+    
+    <div *ngIf="!editando">
+        <img src="../../../assets/image/tenor.png" alt="img" width="400px" height="400px" style="margin: 30px 60px 0px 60px;">
+      </div>
+  </span>
+  <p-confirmDialog header="Confirmação" icon="pi pi-question-circle" acceptLabel="Sim" rejectLabel="Não"></p-confirmDialog>
+
+</body>

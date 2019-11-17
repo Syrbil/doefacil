@@ -1,0 +1,156 @@
+<body>
+<!-- Toolbar -->
+  <div class="p-grid" style="height: 53px !important; background-image: linear-gradient(to right, rgb(80, 74, 186), rgb(137,138,255) 13%, black);
+                              padding: 5px 0px 0px 15px; height: 55px;">
+    <div class="p-col-fixed" style="width: 250px; padding: 10px 0px 10px 40px;">
+      <a class="toolbarbutton" style="font-size: 20px; color: black; font-weight: bold; font-family: permanentMarker;"
+        routerLink="/doacoes">DoeFácil</a>
+    </div>
+    <div class="p-col"></div>
+    <div class="p-col-fixed" style="width: 300px;">
+        <label class="labeltoolbar">{{editando?'Edição de ': 'Cadastro de'}} Usuário</label>
+    </div>
+  </div>
+
+  <div class="container">
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+      <div class="p-grid nested-grid">
+        <div class="p-col-5">
+          <!--Cadastro-->
+          <!--Nome Completo-->
+          <div class="p-grid gridcadastro">
+            <div class="p-col-12 p-md-6 p-lg-3">
+              <input pInputText type="text" name="nome" class="text-input text-input--underbar" style="width: 400px;" placeholder="Nome completo" [(ngModel)]="usuario.nomeCompleto" #nomeCompleto="ngModel" required
+                [disabled]='editando' minlength="3">
+              <div *ngIf="nomeCompleto.hasError('required') && nomeCompleto.touched" class="warning">Informe o nome</div>
+              <div *ngIf="nomeCompleto.hasError('minlength')" class="warning">O nome deve ter no mínimo 3 caractares</div>
+            </div>
+          </div>
+
+            <!--Email-->
+          <div class="p-grid gridcadastro">
+        <div class="p-col-12 p-md-6 p-lg-3">
+          <input pInputText type="text" name="email" class="text-input text-input--underbar" style="width: 400px;" placeholder="Email" [(ngModel)]="usuario.email" #email="ngModel" required >
+          <div *ngIf="email.hasError('required') && email.touched" class="warning">Informe o e-mail</div>
+        </div>
+      </div>
+
+        <!--Nome Usuário-->
+        <!--Senha atual-->
+      <div class="p-grid gridcadastro">
+        <div class="p-col-12 p-md-6 p-lg-3" style="margin-right:100px;">  
+            <input pInputText type="text" name="nomeUsuario" class="text-input text-input--underbar" style="width: 170px;" placeholder="Nome de usuário" [(ngModel)]="usuario.nomeUsuario" #nomeUsuario="ngModel" required>
+            <div *ngIf="nomeUsuario.hasError('required') && nomeUsuario.touched" class="warning">Insira um username</div>
+        </div>
+        <div class="p-col-12 p-md-6 p-lg-3" style="margin-right:100px;" *ngIf="editando">
+            <input pInputText type="password" name="senhaAtual" class="text-input text-input--underbar" placeholder="Senha atual" [(ngModel)]="senhaAtual" style="width: 170px;" required>
+        </div>
+        <div class="p-col-12 p-md-6" *ngIf="editando">
+            <p-checkbox id="disabled-btn" (click)=mudarSenha()  label="Mudar Senha?" class="texto" ></p-checkbox>
+        </div>
+      </div>
+        
+        <!--Senha-->
+        <!--Confirma Senha-->
+      <div class="p-grid gridcadastro">
+        <div class="p-col-12 p-md-6 p-lg-3" style="margin-right:100px;" *ngIf="!editando">
+          <input pInputText type="password" name="senha1" class="text-input text-input--underbar" style="width: 170px;" placeholder="Senha" [(ngModel)]="usuario.senha" #senha1="ngModel" required>
+        </div>
+        <div class="p-col-12 p-md-6 p-lg-3" style="margin-right:100px;" *ngIf="!editando">
+            <input pInputText type="password" name="senha2" class="text-input text-input--underbar" style="width: 170px;" placeholder="Confirma senha" [(ngModel)]="senha2" required>
+        </div>
+      </div>
+
+        <!--Editar senha-->
+        <!--Confirma Editar senha-->
+      <div class="p-grid gridcadastro" *ngIf="editando && mudandoSenha">
+        <div class="p-col-12 p-md-6 p-lg-3" style="margin-right:100px;">    
+            <input pInputText type="password" name="senhaNova" class="text-input text-input--underbar" style="width: 170px;" placeholder="Nova senha" [(ngModel)]="senhaNova" [disabled]="!mudandoSenha" required="mudandoSenha" />
+        </div>
+        <div class="p-col-12 p-md-6 p-lg-3" style="margin-right:100px;" >
+            <input pInputText type="password" name="senhaNova2" class="text-input text-input--underbar" style="width: 170px;" placeholder="Confirma nova senha" [(ngModel)]="senhaNova2" [disabled]="!mudandoSenha" required="mudandoSenha"/>
+        </div>
+      </div>
+
+        <!--Data nascimento-->
+        <!--CPF-->
+      <div class="p-grid gridcadastro">
+          <div class="p-col-12 p-md-6 p-lg-3" style="margin-right:100px;">
+            <p-inputMask mask="99/99/9999" name=nasc [(ngModel)]="usuario.dataNasc"
+            placeholder="Data de nascimento" #nasc="ngModel"  required [disabled]='editando'></p-inputMask>
+            <div *ngIf="nasc.hasError('required') && nasc.touched" class="warning">Informe a Data</div>
+          </div>
+          <div class="p-col-12 p-md-6 p-lg-3" style="margin-right:100px;">
+            <p-inputMask mask="999.999.999-99" name=cpf [(ngModel)]="usuario.cpf" placeholder="CPF"  #cpf="ngModel" required
+            [disabled]='editando'></p-inputMask>
+            <div *ngIf="cpf.hasError('required') && cpf.touched" class="warning">Informe o CPF</div>
+          </div>
+        </div>
+      </div>
+        <div class="p-col-5" style="text-align: center; margin-left: 100px;">
+          <img src="../../../assets/image/tenor.png" alt="img" width="250px" height="250px">
+        </div>
+
+        <div class="p-col-12">
+            <!--Endereço 1-->
+          <div class="p-grid gridcadastro">
+            <div class="p-col-12 p-md-6 p-lg-3" style="margin-right: -70px;">
+                <input pInputText type="text" name="cidade" class="text-input text-input--underbar" style="width: 170px;" placeholder="Cidade" [(ngModel)]="usuario.cidade" #cidade="ngModel" required>
+                <div *ngIf="cidade.hasError('required') && cidade.touched" class="warning">Informe a Cidade</div>
+            </div>
+            
+            <div class="p-col-12 p-md-6 p-lg-3" style="margin-right:100px;">
+                <p-dropdown [options]="estados" name="estado" [(ngModel)]="usuario.estado"  placeholder="Estado"
+                  required   #estado="ngModel">  </p-dropdown>
+            </div>
+          </div>
+
+            <!--Endereço 2-->
+          <div class="p-grid gridcadastro">
+              <div class="p-col-12 p-md-6 p-lg-3" style="margin-right: -70px;">
+                  <input pInputText type="text" name="bairro" class="text-input text-input--underbar" style="width: 170px;" placeholder="Bairro" [(ngModel)]="usuario.bairro" #bairro="ngModel" required>
+                  <div *ngIf="bairro.hasError('required') && bairro.touched" class="warning">Informe o Bairro</div>
+              </div>
+              <div class="p-col-12 p-md-6 p-lg-3" style="margin-right: -70px;">
+                  <input pInputText type="text" name="rua" class="text-input text-input--underbar" style="width: 170px;" placeholder="Rua" [(ngModel)]="usuario.rua" #rua="ngModel" required>
+                <div *ngIf="rua.hasError('required') && rua.touched" class="warning">Informe a Rua</div>
+              </div>
+              
+              <div class="p-col-12 p-md-6 p-lg-3" style="margin-right: -70px;">
+                  <input pInputText type="number" name="numero" class="text-input text-input--underbar" style="width: 170px;" placeholder="Número" [(ngModel)]="usuario.numero" #numero="ngModel" required>
+                <div *ngIf="numero.hasError('required') && numero.touched" class="warning">Informe o Número</div>
+              </div>
+              
+              <div class="p-col-12 p-md-6 p-lg-3" style="margin-right: -70px;">
+                  <textarea class="textarea" name="complemento" rows="3" placeholder="Complemento" [(ngModel)]="usuario.complemento" #complemento="ngModel"></textarea>
+              </div>
+            </div>
+          </div>
+      </div>
+
+        <!--Botão cadastrar-->
+        <div class="p-grid" style="margin: 15px 0px 15px 0px;" *ngIf="!editando">
+          <div class="p-col-2"></div>
+          <div class="p-col-2">
+              <button pButton type="submit" onclick="routerLink='/doacoes'" [disabled]="f.invalid" class="endbutton">Cadastrar-se</button>
+            
+          </div>
+        </div>
+        
+        <!--Botões edição-->
+      <div class="p-grid" style="margin: 15px 0px 15px 0px;" *ngIf="editando">
+        <div class="p-col-3"></div>
+        <div class="p-col-3">
+            <button pButton type="submit" onclick="routerLink='/usuario/meuperfil'" [disabled]="f.invalid" label="Confirmar" icon="pi pi-check" class="endbutton" style="margin: 0px 10px 0px 10px;" ></button>
+        </div>
+        <div class="p-col-3">
+            <a routerLink="/usuario/meuperfil">
+              <button pButton label="Cancelar" icon="pi pi-times" class="endbutton" style="margin: 0px 10px 0px 10px;" ></button>
+            </a>
+        </div>
+        <div class="p-col-3"></div>
+      </div>
+    </form>
+  </div>
+
+</body>

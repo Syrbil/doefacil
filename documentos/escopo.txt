@@ -1,0 +1,7 @@
+Será um sistema de doação de bens materiais, onde haverá um cadastro de usuários. Eles podem ser clientes ou doadores. No cadastro serão coletadas informações pessoais e também informações de localização do usuário.
+Os doadores colocarão itens que tem para doar com fotos anexadas dentro de uma lista de categorias. Os itens cadastrados aparecerão para os usuários que buscarem por aqueles tipos de itens.
+Assim a pessoa que tem itens que já não servem mais para elas pode doar para quem quer aqueles itens. O serviço terá como o cliente avaliar se o usuário que fez a doação merece um like ou um dislike, fazendo com que doadores que cadastrem produtos em locais errados ou vendam produtos mentirosos possam ficar abaixo na lista de doação, nas doações seguintes.
+
+
+
+

@@ -1,0 +1,61 @@
+
+.ui-button.toolbarbutton{
+  size:20px;
+  background-image: none;
+  background-color: transparent !important; 
+  background-repeat: no-repeat; 
+  border: none !important; 
+  overflow: hidden !important; 
+  outline: 0 !important; 
+  font-size: 15px; 
+  font-weight: bold;
+}
+
+.warning{
+  font-size: 10px; 
+  color: red;
+}
+
+.text-input--underbar{
+  border: 2px ridge white;
+  background-image: none !important;
+  background-color: white !important;
+}
+body{
+  background-color: rgb(40, 40, 40);
+  height: 100%;
+}
+
+.texto{
+  color: rgb(240, 240, 240);
+  font-size: 13px;
+}
+
+.labeltoolbar{
+  display: inline-block;
+  padding-top: 5px;
+  font-family: Impact;
+  font-weight: bold;
+  font-size: 20px;
+  width: 250px;
+  color: rgb(240, 240, 240);
+  text-decoration: underline;
+}
+
+label{
+  color: rgb(240, 240, 240);
+  font-size: 17px;
+  font-weight: bold;
+}
+
+div.ui-md-6 .ui-fluid{
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+div.ui-g-12{
+  text-align: center;
+  margin: 30px 0px 30px 30px; 
+  border: 2px solid black; 
+  background-color: rgb(60, 60, 60);
+}
