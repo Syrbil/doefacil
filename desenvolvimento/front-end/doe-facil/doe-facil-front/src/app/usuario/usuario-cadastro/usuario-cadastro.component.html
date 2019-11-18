@@ -42,7 +42,7 @@
         <!--Nome Usuário-->
         <!--Senha atual-->
       <div class="p-grid gridcadastro">
-        <div class="p-col-12 p-md-6 p-lg-3" style="margin: 0px 0px -10px 0px;">  
+        <div class="p-col-12 p-md-6 p-lg-3" style="margin: 0px 100px -10px 0px;">  
             <input pInputText type="text" name="nomeUsuario" class="text-input text-input--underbar" style="width: 185px;" placeholder="Nome de usuário" [(ngModel)]="usuario.nomeUsuario" #nomeUsuario="ngModel" required>
             <div *ngIf="nomeUsuario.hasError('required') && nomeUsuario.touched; else elseBlock" class="warning">Insira um username</div>
         </div>

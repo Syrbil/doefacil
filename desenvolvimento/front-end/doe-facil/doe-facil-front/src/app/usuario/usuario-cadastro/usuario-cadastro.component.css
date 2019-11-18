@@ -30,6 +30,7 @@
   background-color: white !important;
 }
 body{
+  overflow-y: scroll;
   background-color: rgb(30, 30, 30);
 }
 
