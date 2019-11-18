@@ -16,21 +16,21 @@
   <div class=" ui-g-5" style="margin: 20px 20px 20px 20px; max-width: 40%;">
     <div class="ui-md-12 ui-md-9 ui-md-6" style="float: left; text-align: left;">
         <div class="ui-g-2" style="float: right;">
-      
+
             <div class="column avallist" style="margin-right: 30px;">
               <p>
-                <button pButton  label="{{outrem.votosPositivosUsuario}}"   
+                <button pButton  label="{{outrem.votosPositivosUsuario}}"
                   class="ui-button-rounded ui-button-success" icon="pi pi-thumbs-up" style="text-align: center;" ></button>
               </p>
               <p>
-                <button pButton  label="{{outrem.votosNegativosUsuario}}"   
+                <button pButton  label="{{outrem.votosNegativosUsuario}}"
                   class="ui-button-rounded ui-button-danger" icon="pi pi-thumbs-down"  style="text-align: center;" ></button>
-              </p>   
-          </div> 
+              </p>
+          </div>
       </div>
       <div class="ui-md-6 ui-fluid">
         <label>Nome Completo: {{outrem.nomeCompleto}}</label>
-      </div>    
+      </div>
       <div class="ui-md-6 ui-fluid">
         <label>Nome de Usuário: {{outrem.nomeUsuario}}</label>
       </div>
@@ -63,7 +63,7 @@
   <p-dialog header="Selecione a Doação " [(visible)]="mostrar" [modal]="true" [responsive]="true" [style]="{width: '800px','text-align':'center'}"
   [maximizable]="true" [baseZIndex]="10000" >
     <p-confirmDialog header="Confirmação" icon="pi pi-question-circle" acceptLabel="Sim" rejectLabel="Não"></p-confirmDialog>
-    <p-table [value]="doacoes" [paginator]="true" [rows]="5" [responsive]="true">
+    <p-table [value]="doacoes" [paginator]="true" [rows]="4" [responsive]="true">
       <ng-template pTemplate="header" >
         <tr>
           <th>Nome</th>
@@ -87,18 +87,18 @@
   <div class="ui-mg-12 ui-mg-9 ui-mg-6">
     <!-- Imagem do usuário -->
     <div class="ui-g-6" style="text-align: center; margin-bottom: 50px;">
-      <img src="../../../assets/image/tenor.png" alt="img" style="min-width: 75px; min-height: 75px; max-width: 400px; max-height: 200px;">
-    </div>  
+      <img src="../../../assets/image/user.jpg" alt="img" style="min-width: 75px; min-height: 75px; max-width: 400px; max-height: 200px; border-radius: 50%;">
+    </div>
     <div class="ui-g-6" style="text-align: center;">
       <!-- Doações cadastradas -->
       <div class=" ui-g-6" style="text-align:center;">
-          <h2> 
+          <h2>
               <span>
-              <button pButton  label="{{doaFeitas}}"   
-                 class="ui-button-rounded" icon="pi pi-info" style="width: 45px; font-weight: bold; border: none; color: black; background-color: rgb(180, 180, 180);" ></button>
+              <button pButton  label="{{doaFeitas}}"
+                 class="ui-button-rounded"  style="width: 45px; font-weight: bold; border: none; color: black; background-color: rgb(180, 180, 180);" ></button>
                  <label class="labeltoolbar"> Doações cadastradas </label>
               </span>
-               
+
               </h2>
         <p-table [value]="outrem.feitas" [paginator]="true" [rows]="4" [responsive]="true" [autoLayout]="true">
           <ng-template pTemplate="header" >
@@ -119,13 +119,13 @@
 
         <!-- Doações recebidas-->
       <div class="ui-g-6" style="text-align:center;">
-          <h2> 
+          <h2>
               <span>
-              <button pButton  label="{{doaRecebidas}}"   
-                 class="ui-button-rounded" icon="pi pi-info" style="width: 45px; font-weight: bold; border: none; color: black; background-color: rgb(180, 180, 180);" ></button>
+              <button pButton  label="{{doaRecebidas}}"
+                 class="ui-button-rounded"  style="width: 45px; font-weight: bold; border: none; color: black; background-color: rgb(180, 180, 180);" ></button>
                  <label class="labeltoolbar"> Doações recebidas </label>
               </span>
-               
+
               </h2>
         <p-table [value]="outrem.recebidas" [paginator]="true" [rows]="4" [responsive]="true" [autoLayout]="true">
           <ng-template pTemplate="header" >
@@ -138,13 +138,13 @@
           <ng-template pTemplate="body" let-recebida>
             <tr>
               <td><a [routerLink]="['/doacoes',recebida.id]">{{recebida.nome}}</a></td>
-              <td><a *ngIf="recebida.doador.idUsuario==service.logado.idUsuario" 
-                    then [routerLink]="['/usuario/meuperfil']" 
+              <td><a *ngIf="recebida.doador.idUsuario==service.logado.idUsuario"
+                    then [routerLink]="['/usuario/meuperfil']"
                     else [routerLink]="['/usuario/',recebida.doador.idUsuario]">{{recebida.doador.nomeCompleto}} </a></td>
             </tr>
           </ng-template>
         </p-table>
-      </div>  
+      </div>
     </div>
   </div>
 
@@ -160,7 +160,7 @@
       <button type="button" pButton icon="pi pi-minus" (click)="digitar=false" label="Cancelar" class="ui-button-secondary"></button>
     </p-footer>
   </p-dialog>
-  
 
-  
+
+
 </body>

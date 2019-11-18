@@ -18,8 +18,9 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {SidebarModule} from 'primeng/sidebar';
 import {ToolbarModule} from 'primeng/toolbar';
 import {PanelModule} from 'primeng/panel';
+import {FileUploadModule} from 'primeng/fileupload';
 import { OnsenModule } from 'ngx-onsenui';
-
+import * as $ from 'jquery';
 
 import { DoacaoDetalheComponent } from './doacao/doacao-detalhe/doacao-detalhe.component';
 import { DoacaoCadastroComponent } from './doacao/doacao-cadastro/doacao-cadastro.component';
@@ -55,6 +56,7 @@ const rotas: Routes = [
     TooltipModule,
     TableModule,
     FormsModule,
+    FileUploadModule,
     ConfirmDialogModule,
     RouterModule,
     SidebarModule,

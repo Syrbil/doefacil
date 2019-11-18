@@ -49,20 +49,14 @@ export class OutremPerfilComponent implements OnInit {
        this.rotaprogramatica.navigate(['/usuario/meuperfil']);
     }else{
     this.service.buscarUsuarioPorCodigo(id).then((data) => {this.outrem = data;})
-    .then(() => {this.service.buscarDoacoesFeitas(id).then((feitas) => {this.outrem.feitas = feitas})
-    .then(() => {this.service.buscarDoacoesRecebidas(id).then((recebidas) => {this.outrem.recebidas = recebidas})
-    .then(()=>{this.doaFeitas=this.getSize(this.doaFeitas, this.outrem.feitas)})
-    .then(()=>{this.doaRecebidas=this.getSize(this.doaRecebidas, this.outrem.recebidas)});
-    })})}
+    .then(() => {
+    this.service.buscarDoacoesFeitas(id).then((feitas) => {this.outrem.feitas = feitas}).then(()=>{this.doaFeitas=this.outrem.feitas.length})
+    this.service.buscarDoacoesRecebidas(id).then((recebidas) => {this.outrem.recebidas = recebidas}).then(()=>{this.doaRecebidas=this.outrem.recebidas.length})
+    })
+   }
   }
 
-  getSize(doa:number, pegadoacao:Doacao[]){
-    doa=0;
-    for (let i in pegadoacao){
-      doa = doa + 1;
-    }
-    return doa;
-  }
+
 
   mostrarDoacoes(){
     this.service.buscarDoacoesFeitasDisponiveis(this.service.logado.idUsuario).then((dados) => {this.doacoes=dados})
@@ -91,7 +85,7 @@ export class OutremPerfilComponent implements OnInit {
     this.doaService.alterar(doacao).then(() => {
     this.messageService.add({severity:'success', summary:'Doação', detail: doacao.nome+' Enviada com Sucesso'});
     this.mostrar=false;
-    this.service.buscarDoacoesRecebidas(this.outrem.idUsuario).then((recebidas) => {this.outrem.recebidas=recebidas});
+    this.service.buscarDoacoesRecebidas(this.outrem.idUsuario).then((recebidas) => {this.outrem.recebidas=recebidas}).then(()=>{this.doaRecebidas=this.outrem.recebidas.length});
     });
   }
 

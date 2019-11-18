@@ -4,6 +4,7 @@ import { ServicosService } from 'src/app/servicos.service';
 import { MessageService } from 'primeng/api';
 import { Usuario } from 'src/app/model';
 import { FormControl } from '@angular/forms';
+import { FileUpload } from 'primeng/fileupload';
 
 @Component({
   selector: 'app-usuario-cadastro',
@@ -19,6 +20,8 @@ export class UsuarioCadastroComponent implements OnInit {
   mudandoSenha:boolean=false;
   senhaNova:string;
   senhaNova2:string;
+
+  teste : any;
 
   uploadedFiles: any[] = [];
 

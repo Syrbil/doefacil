@@ -1,7 +1,8 @@
 <body>
+  <link rel="stylesheet" type="text/css" href="../assets/css/main.css" media="screen" />
   <!-- Toolbar -->
-  <span class="p-grid" style="height: 53px !important; background-image: linear-gradient(to right, rgb(80, 74, 186), rgb(137,138,255) 13%, black);
-                              padding: 5px 0px 0px 15px; height: 55px;">
+  <span class="p-grid" style="background-image: linear-gradient(to right, rgb(80, 74, 186), rgb(137,138,255) 13%, black);
+                              padding-top: 5px; height: 55px;">
     <div class="p-col-fixed" style="width: 250px; padding: 10px 0px 10px 40px;">
       <a class="toolbarbutton" style="font-size: 20px; color: black; font-weight: bold; font-family: permanentMarker;"
         routerLink="/doacoes">DoeFácil</a>
@@ -18,12 +19,13 @@
       <button pButton type="button" class="toolbarbutton" style="text-decoration-line: underline;" icon="pi pi-user-plus" label="Cadastre-se" routerLink="/usuario/novo"></button>
       <button pButton type="button" class="toolbarbutton" icon="pi pi-user" (click)="showDialog()" label="Login"></button>
     </div>
-    <div class="p-col" *ngIf="logado!=null">
+    <span class="p-col" *ngIf="logado!=null">
       <a [routerLink]="['/usuario/meuperfil']" class="linklabel">{{logado.nomeUsuario}}</a>
-      <button pButton type="buttonq" class="toolbarbutton" icon="pi pi-plus" label="Doar" style="margin-right: 10px;" routerLink="/doacao/nova"></button>
+      <img src="../../../assets/image/user.jpg" alt="img" style="margin-top: 6px; width: 22px; height: 22px; border-radius: 50%;">
+      <button pButton type="buttonq" class="toolbarbutton" icon="pi pi-plus" label="Doar" style="margin: 0px 10px 20px;" routerLink="/doacao/nova"></button>
       <p-menu #menu [popup]="true" [model]="items"></p-menu>
       <button pButton type="button" class="toolbarbutton" icon="pi pi-bars" (click)="menu.toggle($event)"></button>
-    </div>
+    </span>
   </span>
 
   <!-- Doações grid -->
@@ -32,7 +34,7 @@
     <ng-template let-doacao pTemplate="gridItem">
         
         <!--Se não estiver logado não tem link-->
-        <span style="margin: 10px 10px 10px 10px !important;" *ngIf="logado==null">
+        <span style="margin: 10px 10px 10px 10px !important; text-align: center; width: 210px; max-height: 260px;" *ngIf="logado==null">
           <p-panel [header]="doacao.nome" [style]="{'text-align':'center'}">
             <img src="../../../assets/image/doacoes/{{doacao.id}}.jpg" alt="image" style="width: 150px; height: 100px;">
             <div class="doacao-detail"> {{doacao.categoria}}</div>
@@ -42,9 +44,9 @@
         </span>
         
         <!--Se estiver logado tem link-->
-        <a [routerLink]="['/doacoes/',doacao.id]" style="margin: 10px 10px 10px 10px;" *ngIf="logado!=null">
+        <a [routerLink]="['/doacoes/',doacao.id]" style="margin: 10px 10px 10px 10px; text-align: center; width: 210px; max-height: 260px;" *ngIf="logado!=null">
           <p-panel [header]="doacao.nome" [style]="{'text-align':'center'}">
-            <img src="../../../assets/image/doacoes/{{doacao.id}}.jpg" alt="image" style="width: 150px; height: 100px;">
+            <img src="../../../assets/image/doacoes/{{doacao.id}}.jpg" alt="image" style="max-width: 150px; max-height: 100px;">
             <div class="doacao-detail"> {{doacao.categoria}}</div>
             <div class="doacao-detail"> {{doacao.doador.estado}}</div>
             <div class="doacao-detail"> {{doacao.doador.cidade}}</div>

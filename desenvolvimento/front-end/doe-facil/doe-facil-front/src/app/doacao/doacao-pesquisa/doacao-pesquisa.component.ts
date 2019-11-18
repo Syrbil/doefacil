@@ -43,11 +43,11 @@ export class DoacaoPesquisaComponent implements OnInit{
       this.ordem = [
         {label: 'Categoria ', value: 'categoria'},
         {label: 'Nome', value: 'nome'},
-        {label: 'Estado', value: 'estado'}
+        {label: 'Estado', value: 'doador.estado'}
     ];
 
     this.items = [{
-      label: this.logado.nomeUsuario,
+      label: this.logado.nomeCompleto,
       items: [
           {label: 'Meu Perfil', icon: 'pi pi-user' ,routerLink:"/usuario/meuperfil"},
           {label: 'Notificações', icon: 'pi pi-bell', command: () => {this.abrirNotificacoes()} },

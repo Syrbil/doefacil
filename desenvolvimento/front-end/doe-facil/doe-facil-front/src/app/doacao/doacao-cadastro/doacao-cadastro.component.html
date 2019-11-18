@@ -12,15 +12,19 @@
     </div>
   </div>
 
+  <ng-template #elseBlock >
+    <label class="warning" style="opacity: 0;">Insira</label> 
+  </ng-template>
+
   <span>
     <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
       <div class="ui-g-12 ui-md-6">
         
         <div class="ui-md-6 ui-fluid">
-          <input pInputText type="text" name="nome" class="text-input text-input--underbar" placeholder="Nome da doação"
+          <input pInputText type="text" maxlength="22" name="nome" class="text-input text-input--underbar" placeholder="Nome da doação"
             [(ngModel)]="nova.nome" #nome="ngModel" required minlength="3">
-          <div *ngIf="nome.hasError('required') && nome.touched" class="warning">Informe o nome</div>
-          <div *ngIf="nome.hasError('minlength')" class="warning">O nome deve ter no mínimo 3 caractares</div>
+          <div *ngIf="nome.hasError('required') && nome.touched; else elseBlock" class="warning">Informe o nome</div>
+          <div *ngIf="nome.hasError('minlength'); else elseBlock" class="warning">O nome deve ter no mínimo 3 caractares</div>
         </div>
 
         <div>
@@ -53,13 +57,13 @@
       </div>
       </div>
     </form>
-    <div *ngIf="editando">
-      <img src="../../../assets/image/doacoes/{{nova.id}}.jpg" alt="img" width="400px" height="400px" style="margin: 30px 60px 0px 60px;">
+    <div style="text-align: center;" *ngIf="editando">
+      <img src="../../../assets/image/doacoes/{{nova.id}}.jpg" alt="imgage not found" width="400px" height="400px" style="margin: 30px 60px 0px 60px;">
     </div>
     
-    <div *ngIf="!editando">
-        <img src="../../../assets/image/tenor.png" alt="img" width="400px" height="400px" style="margin: 30px 60px 0px 60px;">
-      </div>
+    <div style="text-align: center;" *ngIf="!editando">
+      <img src="../../../assets/image/tenor.png" alt="img" width="400px" height="400px" style="margin: 30px 60px 0px 60px;">
+    </div>
   </span>
   <p-confirmDialog header="Confirmação" icon="pi pi-question-circle" acceptLabel="Sim" rejectLabel="Não"></p-confirmDialog>
 
